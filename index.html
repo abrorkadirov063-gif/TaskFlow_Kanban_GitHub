@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Канбан-доска</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div>
+      <h1>⚡ TaskFlow</h1>
+      <p>Твоя система управления задачами</p>
+    </div>
+    <button class="add-btn" onclick="openModal()">+ Добавить задачу</button>
+  </header>
+
+  <section class="stats">
+    <div class="stat">Всего задач<strong id="total">0</strong></div>
+    <div class="stat">В процессе<strong id="progress">0</strong></div>
+    <div class="stat">Выполнено<strong id="done">0</strong></div>
+  </section>
+
+  <main class="board">
+    <section class="column" data-status="todo">
+      <h2>📥 Новые <span id="count-todo">0</span></h2>
+      <div id="todo" class="tasks"></div>
+    </section>
+    <section class="column" data-status="progress">
+      <h2>⚙️ В процессе <span id="count-progress">0</span></h2>
+      <div id="progress-list" class="tasks"></div>
+    </section>
+    <section class="column" data-status="done">
+      <h2>✅ Готово <span id="count-done">0</span></h2>
+      <div id="done-list" class="tasks"></div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal">
+    <form class="modal-content" onsubmit="addTask(event)">
+      <h2>Новая задача</h2>
+      <input id="taskTitle" placeholder="Название задачи" maxlength="100" required>
+      <textarea id="taskDescription" placeholder="Описание задачи" maxlength="500"></textarea>
+      <select id="taskStatus">
+        <option value="todo">Новые</option>
+        <option value="progress">В процессе</option>
+        <option value="done">Готово</option>
+      </select>
+      <div class="modal-buttons">
+        <button class="save" type="submit">Добавить</button>
+        <button class="cancel" type="button" onclick="closeModal()">Отмена</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
